@@ -1,9 +1,9 @@
 ## SMOTE（Scala）计算过程
 
-## 一、转换源数据
+### 一、转换源数据
 将label列换到第一列，并分区
 
-## 二、寻找k近邻
+### 二、寻找k近邻
 原理可参考sklearn knn(from sklearn.neighbors import KNeighborsClassifier)，改写也是根据Python源码走  
 1.计算距离  
 功能函数：NearestNeighbors.runNearestNeighbors  
@@ -36,7 +36,7 @@ distanceVector vector格式，当前样本与除自己之外的样本计算距�
 
 计算好之后需要进行距离排序，取前K个最近的点  
 
-## 三、合成两个近邻点之间的采样点  
+### 三、合成两个近邻点之间的采样点  
 1.数据抽取：rand.nextInt(kNN)表示给定一个参数n，nextInt(n)将返回一个大于等于0小于n的随机数，即：0 <= nextInt(n) < n。在生成的K个近邻里随机取一个点与sampleData的正样本点合成采样点。  
 此步骤的结果sampleDataNearestNeighbors: Array[(Int, Int, Int, LabeledPoint)]各列内容：  
 [dataArr分区，sampleData样本所在行，dataArr某个分区里样本所在行，sampleData里的样本]  
@@ -44,7 +44,7 @@ distanceVector vector格式，当前样本与除自己之外的样本计算距�
 功能函数：createSyntheticData  
 点生成公式：sampleFeatures += (features - sampleFeatures) * rand  
 
-## 四、过采样样本生成策略  
+### 四、过采样样本生成策略  
 过采样目标一般而言需要保证最终正样本与负样本数量相当  
 即 numSyn == numNeg - numPos,其中numNeg = numAll - numPos  
 需要循环采样的次数creationFactor = math.ceil(numSyn / numPos).toInt  
