@@ -5,7 +5,7 @@
 
 ## 二、寻找k近邻
 原理可参考sklearn knn(from sklearn.neighbors import KNeighborsClassifier)，改写也是根据Python源码走  
-1.计算距离
+1.计算距离  
 功能函数：NearestNeighbors.runNearestNeighbors  
 以当前sampleData为基准数据计算，dataArr为对照数据，尽管这两样本内容是一样的，采用欧氏距离Math.sqrt(sum((sampleFeatures - features) *:* (sampleFeatures - features)))  
 kLocalNeighbors即为某个点与除自己之外的点的距离数据集，初步计算后的结果解释：  
